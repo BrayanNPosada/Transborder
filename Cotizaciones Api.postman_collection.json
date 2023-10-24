@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "1857aeaf-4e32-4955-bc7d-3f23883da05c",
+		"name": "Cotizaciones Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14522474"
+	},
+	"item": [
+		{
+			"name": "Paises",
+			"item": [
+				{
+					"name": "http://localhost:8080/pais",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pais",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pais"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/pais",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"postman\",\r\n    \"codigo\": \"postmanCode\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/pais",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pais"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/pais/1",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"postmanaaaaaaaaaaa\",\r\n    \"codigo\": \"postmanCode\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/pais/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pais",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ciudad",
+			"item": [
+				{
+					"name": "http://localhost:8080/ciudad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ciudad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ciudad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/ciudad",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"postman\",\r\n    \"codigo\": \"postmanCode\",\r\n    \"pais\":{\r\n        \"id\": 1\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ciudad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ciudad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/ciudad/1",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"postmanaaaaaaa\",\r\n    \"codigo\": \"postmanCode\",\r\n    \"pais\":{\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ciudad/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ciudad",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cotizacion",
+			"item": [
+				{
+					"name": "http://localhost:8080/cotizacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cotizacion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cotizacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/cotizacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroCotizacion\": \"1-231023-00001\",\r\n    \"vigenciaCotizacion\": \"2023-10-31\",\r\n    \"moneda\": \"EUR\",\r\n    \"naviera\": \"Maersk\",\r\n    \"mercancia\": \"postmanCode\",\r\n    \"valorMercancia\": \"1035493.32\",\r\n    \"idCiudadOrigen\":{\r\n        \"id\": 1\r\n    },\r\n    \"idCiudadDestino\":{\r\n        \"id\": 2\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cotizacion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cotizacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/cotizacion/1",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroCotizacion\": \"1-231023-00001\",\r\n    \"estado\":\"Modificada\",\r\n    \"vigenciaCotizacion\": \"2023-10-31\",\r\n    \"moneda\": \"EUR\",\r\n    \"naviera\": \"Maersk\",\r\n    \"mercancia\": \"postmanCode\",\r\n    \"valorMercancia\": \"1035493.32\",\r\n    \"idCiudadOrigen\":{\r\n        \"id\": 1\r\n    },\r\n    \"idCiudadDestino\":{\r\n        \"id\": 1\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cotizacion/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cotizacion",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Listas",
+			"item": [
+				{
+					"name": "http://localhost:8080/lista1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Listas/L1/2023-10-24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Listas",
+								"L1",
+								"2023-10-24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/listas2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Listas/L2/bla",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Listas",
+								"L2",
+								"bla"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
