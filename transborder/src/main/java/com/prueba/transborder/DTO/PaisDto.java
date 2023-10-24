@@ -1,9 +1,13 @@
 package com.prueba.transborder.DTO;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class PaisDto {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class PaisDto implements Serializable {
 
     private Long id;
     private String nombre;

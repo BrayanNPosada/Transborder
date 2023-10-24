@@ -28,4 +28,14 @@ public class ListasService {
         return listasController.findAllStatus(status);
     }
 
+    @GetMapping("/L3/{codPais}/{codCiudad}")
+    public @ResponseBody List<CotizacionesDto> getlista3(@PathVariable(value = "codPais") String codPais,@PathVariable(value = "codCiudad") String codCiudad) {
+        return listasController.findAllCodePaisCiudad(codPais,codCiudad);
+    }
+
+    @GetMapping("/L4/{semana}")
+    public @ResponseBody List<CotizacionesDto> getlista4(@PathVariable(value = "semana") String semana) {
+        return listasController.findAllSemanaCreacion(semana);
+    }
+
 }

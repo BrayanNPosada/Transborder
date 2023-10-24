@@ -57,12 +57,79 @@ public class ListasController implements ListasControllerImpl {
 
     @Override
     public List<CotizacionesDto> findAllStatus(String status){
-        List<String> cotizacionesEntity = cotizacionesRepository.findByStatus(status);
+        List<CotizacionesDto> cotizacionesDto = new ArrayList<>();
+        List<CotizacionesEntity> cotizacionesEntity = cotizacionesRepository.findByStatus(status);
         for(int i=0; i< cotizacionesEntity.size(); i++) {
-            System.out.println(cotizacionesEntity.get(i));
+            CotizacionesDto dto = new CotizacionesDto();
+            dto.setNumeroCotizacion(cotizacionesEntity.get(i).getNumeroCotizacion());
+            dto.setVigenciaCotizacion(cotizacionesEntity.get(i).getNumeroCotizacion());
+            dto.setNaviera(cotizacionesEntity.get(i).getNumeroCotizacion());
+            dto.setMercancia(cotizacionesEntity.get(i).getNumeroCotizacion());
+
+            CiudadDto ciuDto = new CiudadDto();
+            ciuDto.setCodigo(ciudadRepository.findById(cotizacionesEntity.get(i).getCiudadDestino().getId()).get().getCodigo());
+
+            PaisDto paisDto = new PaisDto();
+            paisDto.setCodigo(paisRepository.findById(cotizacionesEntity.get(i).getCiudadDestino().getPais().getId()).get().getCodigo());
+            ciuDto.setPais(paisDto);
+
+            dto.setIdCiudadDestino(ciuDto);
+            cotizacionesDto.add(dto);
         }
+
+
+        return cotizacionesDto;
+    }
+
+    @Override
+    public List<CotizacionesDto> findAllSemanaCreacion(String numeroSemana){
+        List<CotizacionesEntity> cotizacionesEntity = cotizacionesRepository.findBySemanaCreacion(numeroSemana);
+
         List<CotizacionesDto> cotizacionesDto = new ArrayList<>();
 
+        for (int i = 0; i < cotizacionesEntity.size(); i++){
+            CotizacionesDto dto = new CotizacionesDto();
+            dto.setNumeroCotizacion(cotizacionesEntity.get(i).getNumeroCotizacion());
+            dto.setEstado(cotizacionesEntity.get(i).getEstado());
+            dto.setFechaCreacion(cotizacionesEntity.get(i).getFechaCreacion());
+            dto.setVigenciaCotizacion(cotizacionesEntity.get(i).getVigenciaCotizacion());
+            dto.setMoneda(cotizacionesEntity.get(i).getMoneda());
+            dto.setFechaModificacion(cotizacionesEntity.get(i).getFechaModificacion());
+            dto.setNaviera(cotizacionesEntity.get(i).getNaviera());
+            dto.setMercancia(cotizacionesEntity.get(i).getMercancia());
+            dto.setValorMercancia(cotizacionesEntity.get(i).getValorMercancia());
+            dto.setFechaCierre(cotizacionesEntity.get(i).getFechaCierre());
+            dto.setIdCiudadDestino(ciudadDtoById(cotizacionesEntity.get(i).getCiudadDestino().getId()));
+            dto.setIdCiudadOrigen(ciudadDtoById(cotizacionesEntity.get(i).getCiudadDestino().getId()));
+
+            cotizacionesDto.add(dto);
+        }
+        return cotizacionesDto;
+    }
+
+    @Override
+    public List<CotizacionesDto> findAllCodePaisCiudad(String codPais,String codCiudad){
+        List<CotizacionesEntity> cotizacionesEntity = cotizacionesRepository.findByPaisAndCuidad(codPais,codCiudad);
+
+        List<CotizacionesDto> cotizacionesDto = new ArrayList<>();
+
+        for (int i = 0; i < cotizacionesEntity.size(); i++){
+            CotizacionesDto dto = new CotizacionesDto();
+            dto.setNumeroCotizacion(cotizacionesEntity.get(i).getNumeroCotizacion());
+            dto.setEstado(cotizacionesEntity.get(i).getEstado());
+            dto.setFechaCreacion(cotizacionesEntity.get(i).getFechaCreacion());
+            dto.setVigenciaCotizacion(cotizacionesEntity.get(i).getVigenciaCotizacion());
+            dto.setMoneda(cotizacionesEntity.get(i).getMoneda());
+            dto.setFechaModificacion(cotizacionesEntity.get(i).getFechaModificacion());
+            dto.setNaviera(cotizacionesEntity.get(i).getNaviera());
+            dto.setMercancia(cotizacionesEntity.get(i).getMercancia());
+            dto.setValorMercancia(cotizacionesEntity.get(i).getValorMercancia());
+            dto.setFechaCierre(cotizacionesEntity.get(i).getFechaCierre());
+            dto.setIdCiudadDestino(ciudadDtoById(cotizacionesEntity.get(i).getCiudadDestino().getId()));
+            dto.setIdCiudadOrigen(ciudadDtoById(cotizacionesEntity.get(i).getCiudadDestino().getId()));
+
+            cotizacionesDto.add(dto);
+        }
         return cotizacionesDto;
     }
 

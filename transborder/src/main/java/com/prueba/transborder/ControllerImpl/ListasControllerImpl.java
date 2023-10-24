@@ -9,4 +9,8 @@ public interface ListasControllerImpl {
     List<CotizacionesDto> findAllFechaCreacion(String fecha);
 
     List<CotizacionesDto> findAllStatus(String status);
+
+    List<CotizacionesDto> findAllSemanaCreacion(String numeroSemana);
+
+    List<CotizacionesDto> findAllCodePaisCiudad(String codPais, String codCiudad);
 }

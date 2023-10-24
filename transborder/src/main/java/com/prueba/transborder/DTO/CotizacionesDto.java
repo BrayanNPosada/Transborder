@@ -1,11 +1,14 @@
 package com.prueba.transborder.DTO;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class CotizacionesDto {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CotizacionesDto implements Serializable {
 
     String numeroCotizacion;
     String estado;
