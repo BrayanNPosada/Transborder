@@ -1,0 +1,23 @@
+databaseChangeLog:
+  -  changeSet:
+       id: 1
+       author: Bposada
+       changes:
+         - createTable:
+             tableName: pais
+             columns:
+               - column:
+                   name: id
+                   type: UUID
+                   constraints:
+                     nullable: false
+               - column:
+                   name: nombre
+                   type: VARCHAR(50)
+                   constraints:
+                     nullable: false
+               - column:
+                   name: codigo
+                   type: VARCHAR(10)
+                   constraints:
+                     nullable: false
