@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: 'createTable-Poke'
+      author: BPosada
+      labels: 'Creacion de la tabla pokemon'
+      changes:
+        - createTable:
+            tableName: pokemon
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: url
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+            remarks: 'Tabla que guarda los datos traidos de la api'
+  - changeSet:
+      id: 'addPrimaryKey-Poke'
+      author: BPosada
+      labels: 'agregado de la llave primaria'
+      changes:
+        - addPrimaryKey:
+            columnNames: id
+            constraintName: pk_dian
+            tableName: pokemon
+            validate: true
+        - addAutoIncrement:
+            columnDataType: int
+            columnName: id
+            defaultOnNull: false
+            incrementBy: 1
+            tableName: pokemon
+  - changeSet:
+      id: 'insert-Poke'
+      author: BPosada
+      changes:
+        - customChange: {
+          "class": "com.prueba.transborder.Controller.Pokeclase",
+          "helloTo": "world" }

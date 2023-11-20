@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: 'createTable-Pais'
+      author: BPosada
+      labels: 'Creacion de la tabla paises'
+      changes:
+        - createTable:
+            tableName: pais
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    autoIncrement: true
+                    nullable: false
+              - column:
+                  name: nombre
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+            remarks: 'Tabla que guarda los paises'
+  - changeSet:
+      id: 'addColmn-Pais'
+      author: BPosada
+      labels: 'agregado de la columna codigo'
+      changes:
+        - addColumn:
+            tableName: pais
+            columns:
+              - column:
+                  name: codigo
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 'addPrimaryKey-Pais'
+      author: BPosada
+      labels: 'agregado de la llave primaria'
+      changes:
+        - addPrimaryKey:
+            columnNames: id
+            constraintName: pk_pais
+            tableName: pais
+            validate: true
+        - addAutoIncrement:
+            columnDataType: int
+            columnName: id
+            defaultOnNull: false
+            incrementBy: 1
+            startWith: 100
+            tableName: pais

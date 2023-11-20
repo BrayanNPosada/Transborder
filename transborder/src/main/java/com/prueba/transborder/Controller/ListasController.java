@@ -1,15 +1,16 @@
 package com.prueba.transborder.Controller;
 
 import com.prueba.transborder.ControllerImpl.ListasControllerImpl;
-import com.prueba.transborder.DTO.CiudadDto;
-import com.prueba.transborder.DTO.CotizacionesDto;
-import com.prueba.transborder.DTO.PaisDto;
+import com.prueba.transborder.DTO.*;
 import com.prueba.transborder.Entity.CiudadEntity;
 import com.prueba.transborder.Entity.CotizacionesEntity;
+import com.prueba.transborder.Entity.PokeEntity;
 import com.prueba.transborder.Entity.PaisEntity;
 import com.prueba.transborder.Repository.CiudadRepository;
 import com.prueba.transborder.Repository.CotizacionesRepository;
+import com.prueba.transborder.Repository.PokeRepository;
 import com.prueba.transborder.Repository.PaisRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +29,13 @@ public class ListasController implements ListasControllerImpl {
 
     @Autowired
     PaisRepository paisRepository;
+
+    @Autowired
+    PokeRepository dianRepository;
+
+    public ListasController(PokeRepository pokeRepository) {
+        this.dianRepository = pokeRepository;
+    }
 
     @Override
     public List<CotizacionesDto> findAllFechaCreacion(String fecha){
@@ -150,6 +158,27 @@ public class ListasController implements ListasControllerImpl {
         response.setCodigo(paisEntity.get(0).getCodigo());
         response.setNombre(paisEntity.get(0).getNombre());
         return response;
+    }
+
+    @Override
+    public void savePoke(PokeDTO listaData){
+        List<PokeDTO> list = new ArrayList<>();
+        for (Results result : listaData.getResults()) {
+            PokeEntity pokeEntity = new PokeEntity();
+            pokeEntity.setUrl(result.getUrl());
+            pokeEntity.setName(result.getName());
+            dianRepository.save(pokeEntity);
+        }
+    }
+
+    private PokeEntity MapDtoToEntityDian(PokeDTO pokeDTO){
+        PokeEntity pokeEntity = new PokeEntity();
+        for (int i = 0; i < pokeDTO.getResults().size(); i++) {
+            pokeEntity.setName(pokeDTO.getResults().get(i).getName());
+            pokeEntity.setUrl(pokeDTO.getResults().get(i).getUrl());
+
+        }
+        return pokeEntity;
     }
 
 }
